@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace IdeaStorm.Models
 {
-    public class IdeaContextInitializer : DropCreateDatabaseAlways<IdeaContext>
+    public class IdeaContextInitializer : DropCreateDatabaseIfModelChanges<IdeaContext>
     {
         protected override void Seed(IdeaContext context)
         {

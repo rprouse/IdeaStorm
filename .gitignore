@@ -158,3 +158,6 @@ $RECYCLE.BIN/
 #Nuget Packages
 packages/
 !packages/repositories.config
+
+IdeaStorm/App_Data/*.mdf
+IdeaStorm/App_Data/*.ldf

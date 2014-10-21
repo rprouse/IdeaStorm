@@ -1,32 +1,29 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
+using Breeze.ContextProvider;
+using Breeze.ContextProvider.EF6;
+using Newtonsoft.Json.Linq;
 
 namespace IdeaStorm.Models
 {
     public class Repository : IRepository
     {
-        private IdeaContext _db;
+        private readonly EFContextProvider<IdeaContext> _contextProvider = new EFContextProvider<IdeaContext>();
 
-        public Repository(IdeaContext db)
+        public string Metadata { get { return _contextProvider.Metadata(); } }
+
+        public SaveResult SaveChanges(JObject saveBundle)
         {
-            _db = db;
+            return _contextProvider.SaveChanges(saveBundle);
         }
 
-        public IQueryable<Idea> GetAllIdeas()
+        public IQueryable<Idea> Ideas()
         {
-            return _db.Ideas;
+            return _contextProvider.Context.Ideas;
         }
 
-        public IQueryable<Idea> GetAllIdeasWithExperiments()
+        public IQueryable<Experiment> Experiments()
         {
-            return _db.Ideas.Include(i => i.Experiments);
-        }
-
-        public Idea GetIdea(int id)
-        {
-            return _db.Ideas
-                      .Include(i => i.Experiments)
-                      .FirstOrDefault(i => i.Id == id);
+            return _contextProvider.Context.Experiments;
         }
     }
 }

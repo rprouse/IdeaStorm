@@ -29,6 +29,6 @@ namespace IdeaStorm.Models
         public string Feedback { get; set; }
         public int Rating { get; set; }
 
-        public ICollection<Experiment> Experiments { get; set; } 
+        public virtual ICollection<Experiment> Experiments { get; set; } 
     }
 }

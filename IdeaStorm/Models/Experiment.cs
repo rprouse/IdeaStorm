@@ -24,5 +24,7 @@ namespace IdeaStorm.Models
         public bool Completed { get; set; }
 
         public int IdeaId { get; set; }
+
+        public virtual Idea Idea { get; set; }
     }
 }

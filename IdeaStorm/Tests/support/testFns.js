@@ -11,7 +11,7 @@ window.testFns = (function () {
   // absolute url for breeze controller
   var serviceRoot = window.location.protocol + '//' +
       window.location.host + '/';
-  var serviceName = serviceRoot + 'breeze/Breeze';
+  var serviceName = serviceRoot + 'breeze/Api';
 
   // define what our testfns will be
   var fns = {
